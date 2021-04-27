@@ -48,4 +48,31 @@ contract VaccinationRecord {
 	secondDoseAddress = sad;
 
     }
+
+    function eligibilityForSecondVaccine() {
+	if (vaccineBrand == "Johnson&Johnson") {
+		return false;
+	} else {
+		if (firstDose == false) {
+			return false;
+		} else if (secondDose == false) {
+			if (vaccineBrand == "Modern") {
+				if (now - firstDoseDate >= (28 * 1 days)) {
+					return true;
+				} else {
+					return false
+				}
+			} else (vaccineBrand == "Pfizer") {
+				if (now - firstDoseDate >= (21 * 1 days)) {
+					return true;
+				} else {
+					return false
+				}
+			}
+		} else {
+			return false;
+		}
+	}
+
+    }
 }
