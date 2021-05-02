@@ -31,12 +31,20 @@ contract VaccinationRecord {
 	return status;
     }
 
+	function setVaccineBrand(string vB) {
+		vaccineBrand = vB;
+	}
+
     function firstVaccine(string fds, string fda, uint256 fdd, uint fdln) {
 	firstDose = true;
 	firstDoseLotNum = fdln; 
 	firstDoseDate = fdd; 
  	firstDoseSite = fds;
 	firstDoseAddress = fad;
+
+	if (vaccineBrand == "Johnson&Johnson") {
+			secondDose = true;
+	}
 
     }
 
